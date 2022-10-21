@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "598279594229",
+    "project_id": "axepress-7d295",
+    "storage_bucket": "axepress-7d295.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598279594229:android:041d559fe48c1365bca5bc",
+        "android_client_info": {
+          "package_name": "com.example.axepress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598279594229-di4mp6qls1iujpfiphokqkdb2bif2a11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJiyGetr0p90rgjdZfdN7ibPg-K-j_ld4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598279594229-di4mp6qls1iujpfiphokqkdb2bif2a11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
