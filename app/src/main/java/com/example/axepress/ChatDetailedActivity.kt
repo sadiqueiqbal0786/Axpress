@@ -63,6 +63,7 @@ class ChatDetailedActivity : AppCompatActivity() {
                        }
                        // i will use notify data changed later
                    }
+                    chatAdapters.notifyDataSetChanged()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

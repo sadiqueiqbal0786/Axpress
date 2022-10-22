@@ -4,6 +4,10 @@
     android:id="@+id/setting"
     android:title="Settings"/>
     <item
+        android:id="@+id/groupChat"
+        android:title="Group"/>
+    <item
         android:id="@+id/logout"
         android:title="LogOut"/>
+
 </menu>

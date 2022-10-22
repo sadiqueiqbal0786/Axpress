@@ -61,6 +61,7 @@ class MainActivity2 : AppCompatActivity() {
                 startActivity(Intent(this,LogIn::class.java))
                 finish()
             }
+            R.id.groupChat->startActivity(Intent(this,GroupChatActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
