@@ -6,7 +6,9 @@ class MessageModel(var uId:String? =null, var message:String?=null ,var timeStam
        this.uId=uId
        this.message=message
     }
-    constructor() : this(null){}
+    class MessageModel constructor(){
+
+    }
     @JvmName("getUId1")
     public fun getUId():String{
         return uId.toString()

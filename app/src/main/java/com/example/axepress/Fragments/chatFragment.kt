@@ -35,9 +35,9 @@ class chatFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentChatBinding.inflate(inflater, container, false)
         database=FirebaseDatabase.getInstance()
-        val adapter:usersAdapter= usersAdapter(list, context)
+        val adapter= usersAdapter(list, context)
         binding.chatRecycllerView.adapter=adapter
-        val layoutManager:LinearLayoutManager= LinearLayoutManager(context)
+        val layoutManager= LinearLayoutManager(context)
         binding.chatRecycllerView.layoutManager = layoutManager
         database.reference.child("Users").addValueEventListener(object:ValueEventListener{
             @SuppressLint("NotifyDataSetChanged")
@@ -56,7 +56,7 @@ class chatFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
+                TODO()
             }
 
         })

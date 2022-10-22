@@ -3,12 +3,16 @@ package com.example.axepress
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.axepress.Adapters.chatAdapter
 import com.example.axepress.Models.MessageModel
 import com.example.axepress.databinding.ActivityChatDetailedBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.ArrayList
@@ -25,29 +29,52 @@ class ChatDetailedActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         auth=FirebaseAuth.getInstance()
-        var senderId:String= auth.uid.toString()
+        var sh=findViewById<TextView>(R.id.senderText)
+        val senderId:String= auth.uid.toString()
         database=FirebaseDatabase.getInstance()
         auth=FirebaseAuth.getInstance()
-        var recieverId:String= intent.getStringExtra("userId").toString()
-        var userName:String=intent.getStringExtra("userName").toString()
-        var profilePic:String=intent.getStringExtra("profilePic").toString()
+        val recieverId:String= intent.getStringExtra("userId").toString()
+        val userName:String=intent.getStringExtra("userName").toString()
+        val profilePic:String=intent.getStringExtra("profilePic").toString()
         binding.userName.text = userName
         Picasso.get().load(profilePic).placeholder(R.mipmap.user).into(binding.profileImage)
 
         binding.backbutton.setOnClickListener{
             startActivity(Intent(this,MainActivity2::class.java))
         }
-        var messageModel:ArrayList<MessageModel> = ArrayList()
-        var chatAdapters:chatAdapter=chatAdapter(messageModel,this)
+        val messageModel:ArrayList<MessageModel> = ArrayList()
+        val chatAdapters=chatAdapter(messageModel,this)
         binding.chatRecyclerView.adapter = chatAdapters
 
-        var layoutManager:LinearLayoutManager= LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this)
         binding.chatRecyclerView.layoutManager=layoutManager
-        var senderRoom:String=senderId+recieverId
-        var receiverRoom:String=recieverId+senderId
+
+        val senderRoom:String=senderId+recieverId
+        val receiverRoom:String=recieverId+senderId
+
+        database.reference.child("Chats").child(senderRoom)
+            .addValueEventListener(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    messageModel.clear()
+                   for (snapshot1:DataSnapshot in snapshot.children){
+                     val model = snapshot1.getValue(MessageModel::class.java)
+                       if (model != null) {
+                           messageModel.add(model)
+                       }
+                       // i will use notify data changed later
+                   }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
+
         binding.send.setOnClickListener{
-            var message:String=binding.messagebox.text.toString()
-            var model:MessageModel= MessageModel(senderId,message)
+            val message:String=binding.messagebox.text.toString()
+            val model= MessageModel(senderId,message)
             model.setTimeStamp(Date().time)
             binding.messagebox.text.clear()
 
