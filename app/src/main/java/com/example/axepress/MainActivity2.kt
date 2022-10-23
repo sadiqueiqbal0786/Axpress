@@ -54,6 +54,7 @@ class MainActivity2 : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.setting->{
+                startActivity(Intent(this,settings::class.java))
             }
             R.id.logout->{
               authe.signOut()
