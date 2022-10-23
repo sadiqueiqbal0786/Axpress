@@ -6,7 +6,9 @@
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/bg_reciever.xml" value="0.143" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/bg_sender.xml" value="0.1035" />
+        <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/btn_background.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1195" />
+        <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.129" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_baseline_contacts_24.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.107" />
@@ -15,12 +17,14 @@
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_icons8_google.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_icons8_phone.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/linear_bg.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/drawable/round.xml" value="0.1" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_chat_detailed.xml" value="0.25" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_group_chat.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_log_in.xml" value="0.19" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_main2.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/activity_signup2.xml" value="0.22" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/fragment_chat.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/sadiq/AndroidStudioProjects/AxePress/app/src/main/res/layout/fragment_chat2.xml" value="0.14221014492753623" />
