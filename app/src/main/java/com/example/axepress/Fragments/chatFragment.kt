@@ -14,6 +14,7 @@ import com.example.axepress.Adapters.usersAdapter
 import com.example.axepress.Models.Users
 import com.example.axepress.R
 import com.example.axepress.databinding.FragmentChatBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -47,8 +48,10 @@ class chatFragment : Fragment() {
                 for (datasnapshot:DataSnapshot in snapshot.children){
                     val user: Users? = datasnapshot.getValue( Users::class.java)
                     user?.setUserId(datasnapshot.key)//now get is working fine i will do set later
-                    if (user != null) {
-                        list.add(user)
+                    if (!user?.getUserId().equals(FirebaseAuth.getInstance().uid)) {
+                        if (user != null) {
+                            list.add(user)
+                        }
                     }
 
                 }

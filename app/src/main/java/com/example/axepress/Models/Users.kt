@@ -5,7 +5,8 @@ class Users(var username:String?=null,
             var password:String?=null,
             var profilepic:String?=null,
             var userId:String?=null,
-            var lastMessage:String?=null
+            var lastMessage:String?=null,
+            var status:String?=null
 ){
     class Users constructor(username: String,mail: String,password:String) {
 
@@ -74,6 +75,14 @@ class Users(var username:String?=null,
     @JvmName("setUserId2")
     fun setUserId(userId: String?) {
         this.userId=userId
+    }
+    @JvmName("getStatus1")
+    public fun getStatus():String{
+        return status.toString()
+    }
+    @JvmName("setStatus1")
+    public fun setStatus(status:String?){
+        this.status=status
     }
 
 }

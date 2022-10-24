@@ -1,6 +1,7 @@
 package com.example.axepress.Models
 
-class MessageModel(var uId:String? =null, var message:String?=null ,var timeStamp:Long?=null) {
+class MessageModel(var uId:String? =null, var message:String?=null ,var timeStamp:Long?=null,
+var messageId:String?=null) {
 
    constructor(uId: String?,message: String?) : this() {
        this.uId=uId
@@ -32,6 +33,14 @@ class MessageModel(var uId:String? =null, var message:String?=null ,var timeStam
     @JvmName("setTimeStamp1")
     public fun setTimeStamp(timeStamp: Long?){
         this.timeStamp=timeStamp
+    }
+    @JvmName("getMessageId1")
+    public fun getMessageId():String{
+        return messageId.toString()
+    }
+    @JvmName("setMessageId1")
+    public fun setMessageId(messageId: String?){
+        this.messageId=messageId
     }
 
 

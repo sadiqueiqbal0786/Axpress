@@ -23,6 +23,7 @@ class GroupChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityGroupChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val recieverId:String= intent.getStringExtra("userId").toString()
 
         supportActionBar?.hide()
 
@@ -35,7 +36,7 @@ class GroupChatActivity : AppCompatActivity() {
         binding.userName.text="Group Chat"
 
         val messageModel= ArrayList<MessageModel>()
-        val adapter =chatAdapter(messageModel,this)
+        val adapter =chatAdapter(messageModel,this,recieverId)
         binding.chatRecyclerView.adapter=adapter
 
         val layoutManager = LinearLayoutManager(this)
@@ -46,6 +47,7 @@ class GroupChatActivity : AppCompatActivity() {
                 messageModel.clear()
                 for (dataSnapshot : DataSnapshot in snapshot.children){
                     val model=dataSnapshot.getValue(MessageModel::class.java)
+                    model?.setMessageId(dataSnapshot.key)
                     if (model != null) {
                         messageModel.add(model)
                     }
@@ -63,6 +65,10 @@ class GroupChatActivity : AppCompatActivity() {
 
 
         binding.send.setOnClickListener{
+            if (binding.messagebox.text.toString().isEmpty()){
+                binding.messagebox.error="Please enter message"
+            }
+            else{
             val message:String = binding.messagebox.text.toString()
             val model = MessageModel(senderId,message)
             model.setTimeStamp(Date().time)
@@ -73,7 +79,7 @@ class GroupChatActivity : AppCompatActivity() {
                 .setValue(model).addOnSuccessListener(OnSuccessListener {
                 })
 
-        }
+        }}
 
         }
     }

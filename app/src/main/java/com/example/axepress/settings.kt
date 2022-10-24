@@ -18,6 +18,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
+import java.util.*
+import kotlin.collections.HashMap
 
 class settings : AppCompatActivity() {
     lateinit var binding: ActivitySettingsBinding
@@ -37,13 +39,29 @@ class settings : AppCompatActivity() {
         binding.backButton.setOnClickListener{
             startActivity(Intent(this,MainActivity2::class.java))
         }
+        binding.saveBtn.setOnClickListener(View.OnClickListener {
+            val status:String = binding.Status.text.toString()
+            val username = binding.etUserName.text.toString()
+
+           val obj: MutableMap<String,Any> = HashMap()
+            obj.put("username",username)
+            obj.put("status",status)
+
+            database.reference.child("Users").child(FirebaseAuth.getInstance().uid!!)
+                .updateChildren(obj)
+            Toast.makeText(this,"username and status has been updated",Toast.LENGTH_SHORT).show()
+        })
+
         database.reference.child("Users").child(FirebaseAuth.getInstance().uid!!)
             .addListenerForSingleValueEvent(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                    val users:Users= snapshot.getValue(Users::class.java)!!
                     Picasso.get()
                         .load(users.getprofilepic())
+                        .placeholder(R.mipmap.user)
                         .into(binding.profile)
+                    binding.Status.setText(users.getStatus())
+                    binding.etUserName.setText(users.getUsername())
                 }
 
                 override fun onCancelled(error: DatabaseError) {

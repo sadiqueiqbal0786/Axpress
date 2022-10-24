@@ -43,7 +43,7 @@ class ChatDetailedActivity : AppCompatActivity() {
             startActivity(Intent(this,MainActivity2::class.java))
         }
         val messageModel:ArrayList<MessageModel> = ArrayList()
-        val chatAdapters=chatAdapter(messageModel,this)
+        val chatAdapters=chatAdapter(messageModel,this,recieverId)
         binding.chatRecyclerView.adapter = chatAdapters
 
         val layoutManager = LinearLayoutManager(this)
@@ -58,6 +58,7 @@ class ChatDetailedActivity : AppCompatActivity() {
                     messageModel.clear()
                    for (snapshot1:DataSnapshot in snapshot.children){
                      val model = snapshot1.getValue(MessageModel::class.java)
+                       model?.setMessageId(snapshot1.key)
                        if (model != null) {
                            messageModel.add(model)
                        }
@@ -74,6 +75,10 @@ class ChatDetailedActivity : AppCompatActivity() {
 
 
         binding.send.setOnClickListener{
+            if (binding.messagebox.text.toString().isEmpty()){
+                binding.messagebox.error="Please enter message"
+            }
+            else{
             val message:String=binding.messagebox.text.toString()
             val model= MessageModel(senderId,message)
             model.setTimeStamp(Date().time)
@@ -87,7 +92,7 @@ class ChatDetailedActivity : AppCompatActivity() {
                         }
                 }
 
-        }
+        }}
 
 
     }

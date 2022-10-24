@@ -49,6 +49,13 @@ class LogIn : AppCompatActivity() {
 
         binding.signupIn.setOnClickListener{
             try{
+                if (binding.emailIn.text.toString().isEmpty()){
+                    binding.emailIn.error = "Enter valid email"
+                }
+                if (binding.passwordIn.text.toString().isEmpty()){
+                    binding.passwordIn.error = "Enter valid password"
+                }
+
            progressDialog.show()
 
            auth.signInWithEmailAndPassword(binding.emailIn.text.toString(),binding.passwordIn.text.toString())
