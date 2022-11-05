@@ -3,6 +3,7 @@ package com.example.axepress
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.axepress.Adapters.chatAdapter
@@ -65,6 +66,7 @@ class ChatDetailedActivity : AppCompatActivity() {
                        // i will use notify data changed later
                    }
                     chatAdapters.notifyDataSetChanged()
+                    binding.chatRecyclerView.scrollToPosition(messageModel.size-1)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -93,6 +95,7 @@ class ChatDetailedActivity : AppCompatActivity() {
                 }
 
         }}
+        binding.chatRecyclerView.scrollToPosition(messageModel.size-1)
 
 
     }

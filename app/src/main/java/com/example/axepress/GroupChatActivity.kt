@@ -54,6 +54,7 @@ class GroupChatActivity : AppCompatActivity() {
 
                 }
                 adapter.notifyDataSetChanged()
+                binding.chatRecyclerView.scrollToPosition(messageModel.size-1)
             }
 
             override fun onCancelled(error: DatabaseError) {

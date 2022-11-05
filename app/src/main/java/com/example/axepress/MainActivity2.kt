@@ -41,8 +41,6 @@ class MainActivity2 : AppCompatActivity() {
         binding.viewPager.adapter = fragmentAdapters(supportFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
 
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
