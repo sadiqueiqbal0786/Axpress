@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.axepress.Models.Users
 import com.example.axepress.databinding.ActivityLogInBinding
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,6 +21,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+
 
 class LogIn : AppCompatActivity() {
     lateinit var binding: ActivityLogInBinding
@@ -26,6 +34,8 @@ class LogIn : AppCompatActivity() {
     lateinit var mGoogleSignInClient:GoogleSignInClient
     private lateinit var database: FirebaseDatabase
     val Req_Code: Int = 97
+    private lateinit var authListener:FirebaseAuth.AuthStateListener
+    private lateinit var callbackManager: CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
@@ -36,6 +46,9 @@ class LogIn : AppCompatActivity() {
         progressDialog.setMessage("Please wait..")
         supportActionBar?.hide()
         database= FirebaseDatabase.getInstance()
+        FacebookSdk.sdkInitialize(applicationContext)
+
+
         //configure Google signIn
         FirebaseApp.initializeApp(this)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -85,6 +98,28 @@ class LogIn : AppCompatActivity() {
         if(auth.currentUser!=null){
             startActivity(Intent(this,MainActivity2::class.java))
         }
+        //facebook login
+       /* callbackManager=CallbackManager.Factory.create()
+        LoginManager.getInstance().registerCallback(callbackManager, object :
+            FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+
+            }
+
+            override fun onCancel() {
+
+            }
+
+            override fun onError(error: FacebookException) {
+
+            }
+        })
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+
+            // Pass the activity result back to the Facebook SDK
+            callbackManager.onActivityResult(requestCode, resultCode, data)
+        }*/
     }
     private fun signInGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
