@@ -33,7 +33,7 @@ class LogIn : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var mGoogleSignInClient:GoogleSignInClient
     private lateinit var database: FirebaseDatabase
-    val Req_Code: Int = 97
+    val Req_Code: Int = 99
     private lateinit var authListener:FirebaseAuth.AuthStateListener
     private lateinit var callbackManager: CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class LogIn : AppCompatActivity() {
         supportActionBar?.hide()
         database= FirebaseDatabase.getInstance()
         FacebookSdk.sdkInitialize(applicationContext)
-
+        database.setPersistenceEnabled(true)
 
         //configure Google signIn
         FirebaseApp.initializeApp(this)
